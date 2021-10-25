@@ -1,0 +1,37 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import Footer from '../components/Footer/Footer.vue';
+
+<Meta title="C.Simples/Footer" component={Footer} />
+
+export const Template = () => ({
+  components: { Footer },
+  template: '<Footer style="top:0px"/>'
+});
+
+# COMPONENTE PIE DE PÁGINA
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Footer from '../components/Footer/Footer.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Footer />
+```
+
+El footer por defecto se coloca en el pie de la página en que se añada. El componente recalcula el alto de la pantalla en la que va a ser dispuesto y ocupará todo el ancho de la misma.
+
+## Resultado visual
+
+<Story
+  name="Footer"
+>
+  {Template.bind({})}
+</Story>

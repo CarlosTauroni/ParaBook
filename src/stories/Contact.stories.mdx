@@ -1,0 +1,23 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Contact from '../pages/Contact/Contact.vue';
+
+<Meta title="Construcciones/Contacto" component={Contact} />
+
+export const Template = () => ({
+  components: { Contact },
+  template: '<Contact />'
+});
+
+# COMPONENTE DE CONTACTO
+
+Constructo compuesto de:
+
+- Título de sección
+- Botón
+
+## Resultado visual
+
+<Story name="Contacto">
+  {Template.bind({})}
+</Story>

@@ -1,0 +1,63 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Sidebar from '../components/Sidebar/Sidebar.vue';
+
+<Meta title="C.Simples/Barras Y Menús/Sidebar" component={Sidebar} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Sidebar },
+  template: '<Sidebar style="position:relative; display:block !important; top:0px" :title=this.title :data=this.data />',
+});
+
+# COMPONENTE SIDEBAR
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Sidebar from '../components/Sidebar/Sidebar.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Sidebar :title=this.title :data=this.data />
+```
+
+La sideabr por defecto se coloca en el principio de la página en la que se añada. El componente ocupará todo el alto de la misma y está dispuesto para ser responsive, ocultandose a determinadas resoluciones y siendo llamado por el componente cabecera.
+
+NOTA: **Para el catálogo se ha modificado el comportamiento, con lo que el menú no desaparecerá a pesar de reducir la resolución. Al usar el componente recueprará el comportamiento por defecto se cerrará de izquierda a derecha**
+
+El componente espera que se le pasen los siguientes datos:
+
+- title: (String) Título que tendrá el menu del sidebar.
+- options: [{}] Vector de Json con los nombres y los enlaces a los que redigirán las opciones del menú.
+
+El cuerpo de cada elemento del Json ha de ser el siguiente:
+
+```js
+{
+  name: String,
+  link: String,
+}
+```
+
+## Resultado visual
+
+<Story
+  name="Sidebar"
+  args={{
+    title: 'Titulo del Sidebar',
+    data: [
+      {name:'Opción 1', link:'#'},
+      {name:'Opción 2', link:'#'},
+      {name:'Opción 3', link:'#'},
+      {name:'Opción 4', link:'#'}
+    ],
+  }}>
+  {Template.bind({})}
+</Story>

@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Mandalorian";
+  src: url("../../assets/font/mandalor.woff");
+}
+@font-face {
+  font-family: "DistantGalaxy";
+  src: url("../../assets/font/DistantGalaxy.woff");
+}
+
+.para-min-container{min-width: 433px;}
+.para-w-full{width:100%}
+
+.para-jumbo{font-size: 50px;}
+.para-text-blue,.para-hover-text-blue:hover{color:#181F2C!important}
+.para-text-red{color:#ff4543}
+
+.card{min-height: 150px;}
+
+/* Add button styles */
+.tab-panel{ position: relative;	min-width: 385px;}
+.addButton{ width: 40px; height: 40px; background-color: #181f2c; border-radius: 50%; cursor: pointer; position: absolute; right: 0px; top: -10px; box-shadow: 5px 10px 18px #888888;}
+.addButton:hover{	background-color: #CCCCCC; box-shadow: 5px 10px 18px #888888;}
+.addUserButtonIcon, .addProductButtonIcon, .addCategoryButtonIcon{ color: #FFFFFF; font-size: 20px;}
+.addUserButtonIcon{ padding: 9px 5px;}
+.addProductButtonIcon, .addCategoryButtonIcon{ padding: 10px 6px;}
+
+:root {
+	--select-border: #777;
+	--select-focus: #ff4543;
+	--select-arrow: var(--select-border);
+}

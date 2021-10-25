@@ -1,0 +1,137 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Button from '../components/Button/Button.vue';
+
+<Meta title="C.Simples/Botón" component={Button} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Button },
+  methods: {
+    onClick: function(){
+      console.log('Se ha realizado una acción de click');
+    }
+  },
+  template: `<Button :msg="this.msg" :size="this.size" :type="this.type" @click="onClick()" />`,
+});
+
+# COMPONENTE BOTÓN
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Button from "../components/Button/Button.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Button :msg="this.msg" :size="this.size" :type="this.type" @click="onClick()" />
+```
+
+El elemento botón con tiene tres variantes. Estas son:
+
+- Button Primary
+- Button Secondary
+- Button Tertiary
+
+Todos los tipos de componentes botón aceptarán los siguientes parámetros:
+
+- msg: (String) Texto que figurará en el botón.
+- size: ['small' | 'large'] Tamaño del botón a incluir.
+- type: ['primary' | 'secondary' | 'tertiary'] Tipología de botón a incluir.
+- @click: El parámetro pasado ha de ser una función definirda en el componente llamante.
+
+## Botón Primario
+
+<Story
+  name="Primary Small"
+  args={{
+    msg: 'Botón Primario',
+    size: 'small',
+    type: 'primary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Primario" :size="small" :type="primary" @click="onClick()" />
+```
+
+<Story
+  name="Primary Large"
+  args={{
+    msg: 'Botón Primario',
+    size: 'large',
+    type: 'primary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Primario" :size="large" :type="primary" @click="onClick()" />
+```
+
+## Botón Secundario
+
+<Story
+  name="Secondary Small"
+  args={{
+    msg: 'Botón Secundario',
+    size: 'small',
+    type: 'secondary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Secundario" :size="small" :type="secondary" @click="onClick()" />
+```
+
+<Story
+  name="Secondary Large"
+  args={{
+    msg: 'Botón Secundario',
+    size: 'large',
+    type: 'secondary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Secundario" :size="large" :type="secondary" @click="onClick()" />
+```
+
+## Botón Terciario
+
+<Story
+  name="Tertiary Small"
+  args={{
+    msg: 'Botón Terciario',
+    size: 'small',
+    type: 'tertiary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Terciario" :size="small" :type="tertiary" @click="onClick()" />
+```
+
+<Story
+  name="Tertiary Large"
+  args={{
+    msg: 'Botón Terciario',
+    size: 'large',
+    type: 'tertiary'
+  }}>
+  {Template.bind({})}
+</Story>
+
+```html live=true
+<Button :msg="Botón Terciario" :size="large" :type="tertiary" @click="onClick()" />
+```

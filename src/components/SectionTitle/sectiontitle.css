@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "StarJedi";
+  src: url("../../assets/font/StarJedi.woff");
+}
+@font-face {
+  font-family: "StarJediHollow";
+  src: url("../../assets/font/StarJediHollow.woff");
+}
+@font-face {
+  font-family: "Mandalorian";
+  src: url("../../assets/font/mandalor.woff");
+}
+@font-face {
+  font-family: "DistantGalaxy";
+  src: url("../../assets/font/DistantGalaxy.woff");
+}
+
+.para-min-container{min-width: 433px;}
+.para-w-full{width:100%}
+
+.para-jumbo{font-size: 50px;}
+.para-text-blue,.para-hover-text-blue:hover{color:#181F2C!important}
+.para-text-red{color:#ff4543}
+
+.para-manda-font{font-family: Mandalorian, "courier new"; font-size: 12px;}
+.para-manda-size{font-size: 30px;}

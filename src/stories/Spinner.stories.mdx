@@ -1,0 +1,42 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Spinner from '../components/Spinner/Spinner.vue';
+
+<Meta title="C.Simples/Spinner" component={Spinner} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Spinner },
+  template: '<Spinner style="position:relative" :showSpinner="this.showSpinner"/>',
+});
+
+# COMPONENTE SPINNER
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Spinner from '../components/Spinner/Spinner.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Spinner :showSpinner="this.showSpinner"/>
+``` 
+El spinner no tiene más variantes.
+
+- showSpinner: (Boolean) Indica si el spinner debe o no ser visible.
+
+## Resultado visual
+
+<Story
+  name="Spinner"
+  args={{
+    showSpinner: true
+  }}>
+  {Template.bind({})}
+</Story>

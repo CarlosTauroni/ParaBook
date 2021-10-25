@@ -1,0 +1,66 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Header from '../components/Header/Header.vue';
+
+<Meta title="C.Compuestos/Header" component={Header} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Header },
+  template: '<Header style="position:relative" :title=this.title :options=this.options />',
+});
+
+# COMPONENTE CABECERA
+
+Constructo compuesto de:
+
+- SideBar
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Header from '../components/Header/Header.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Header :title=this.title :options=this.options />
+```
+
+La cabecera por defecto se coloca en el principio de la página en la que se añada. El componente ocupará todo el ancho de la misma y está dispuesto para ser responsive, cambiando su apariencia al reducir el tamaño de la pantalla.
+
+Iternamente implementa el componente Sidebar descrito en esta misma sección y para el cual hay que pasarle los siguientes datos:
+
+- title: (String) Título que tendrá el menu del sidebar.
+- options: [{}] Vector de Json con los nombres y los enlaces a los que redigirán las opciones del menú.
+
+El cuerpo de cada elemento del Json ha de ser el siguiente:
+
+```js
+{
+  name: String,
+  link: String,
+}
+```
+
+## Resultado visual
+
+<Story
+  name="Header"
+  args= {{
+    title: 'Titulo del Sidebar',
+    options: [
+      {name:'Opción 1', link:'#'},
+      {name:'Opción 2', link:'#'},
+      {name:'Opción 3', link:'#'},
+      {name:'Opción 4', link:'#'}
+    ],
+  }}
+>
+  {Template.bind({})}
+</Story>

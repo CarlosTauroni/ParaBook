@@ -1,0 +1,42 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import SectionTitle from '../components/SectionTitle/SectionTitle.vue';
+
+<Meta title="C.Simples/Títulos/Título de sección" component={SectionTitle} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { SectionTitle },
+  template: '<SectionTitle :msg=this.msg />',
+});
+
+# COMPONENTE TÍTULO DE SECCIÓN
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import SectionTitle from '../components/SectionTitle/SectionTitle.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<SectionTitle :msg=this.msg />
+``` 
+El título de sección no tiene más variantes.
+
+- msg: (String) Título que tendrá la sección.
+
+## Resultado visual
+
+<Story
+  name="Título de sección"
+  args={{
+    msg: 'Título de sección.'
+  }}>
+  {Template.bind({})}
+</Story>

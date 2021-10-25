@@ -1,0 +1,87 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import CartIcon from '../components/CartIcon/CartIcon.vue';
+import ShoppingCart from '../components/ShoppingCart/ShoppingCart.vue';
+import R2D2 from './assets/FunkoR2D2.jpg';
+import FunkoStormTrooper from './assets/FunkoStormTrooper.jpg';
+
+<Meta title="C.Compuestos/CartIcon" component={CartIcon} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { CartIcon, ShoppingCart },
+  template: `<CartIcon :showCart=this.showCart :totalCart=this.totalCart :cart='this.cart'/>`,
+});
+
+# COMPONENTE CARRITO DE LA COMPRA
+
+Constructo compuesto de:
+
+- ShoppingCart
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import CartIcon from '../components/CartIcon/CartIcon.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<CartIcon :showCart=this.showCart :totalCart=this.totalCart :cart='this.cart' />
+```
+
+El elemento botón de carrito de la compra no tiene más variantes e implementa el elemento ShoppingCart descrito en esta misma sección.
+
+Los argumentos que recibe son los siguientes:
+
+- showCart: (Boolean) Indica si el carro estará abierto o cerrado.
+- totalCart: (Number) Indica la cantidad contenida por el carrito, esta cantidad ha de ser enviada calculada.
+- cart : [{}] Vector de Jsons de producto, por cada uno de los elementos añadidos se almacenna la información del producto.
+
+El cuerpo de cada elemento del Json corresponde con los campos enviados desde el backend y deben contener los siguientes campos:
+
+```js
+{
+  amount: Number,
+  alttext: String,
+  description: String,
+  id: String,
+  img: Image,
+  name: String,
+  price: Number
+}
+```
+
+## Resultado visual
+
+<Story
+  name="CartIcon"
+  args={{
+    showCart:false,
+    totalCart: 0,
+    cart : [{
+        amount: 5,
+        alttext: "R2D2",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4df2",
+        img: R2D2,
+        name: "R2D2",
+        price: 13.02,
+      },{
+        amount: 5,
+        alttext: "FunkoStormTrooper",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4df3",
+        img: FunkoStormTrooper,
+        name: "Storm Trooper",
+        price: 11.50
+      },
+    ]
+  }}>
+  {Template.bind({})}
+</Story>

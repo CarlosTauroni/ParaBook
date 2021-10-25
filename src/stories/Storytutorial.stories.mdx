@@ -1,0 +1,162 @@
+import { Meta } from '@storybook/addon-docs';
+
+import VStarter from './assets/vuestarter.jpg';
+import SStarter from './assets/storystarter.jpg';
+
+<Meta title="Construcción De Un Catálogo" />
+
+<style>{`
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`}</style>
+
+# Construcción De Un Catálogo De Componentes Paso A Paso.
+
+En este apartado explicaremos como construir un catálogo de componentes paso a paso, siguiendo el modelo utilizado para la construcción de este mismo catálogo.
+
+En caso de querer realizar una instalación manual de un catálogo de componentes los pasos a seguir son:
+
+
+## Paso 1 - Instalación
+
+Ubicarse en la carpeta donde se quiera instalar el proyecto, se ejecutan los siguientes comandos, donde el primero instalará de manera global el cliente de VUE. (si usted ya lo tiene instalado puede saltarse la primera línea)
+
+```sh
+npm install -g @vue/cli
+vue create <nombre del proyecto>
+npm run serve
+```
+
+En este punto deberá arrancarse una aplicación starter de VUE JS con la página de inicio, este será nuestro proyecto donde desarrollaremos los componentes funcionales.
+
+<img className="center" src={VStarter} alt="starter" />
+
+## Paso 2 - Scafolding y Organización Del Proyecto
+
+La manera de trabajar que recomiendo es la creación del mismo scafolding que tengamos pensado para el Storybook, o al menos un scafolding con una estructura similar.
+
+```sh
+src
+|__components
+|   |__comp 1
+|   | |__comp 1.css
+|   | |__comp 1.vue
+|   |__comp 2
+|   |__comp 3
+|__pages
+   |__page 1
+   |__page 2
+```
+
+## Paso 3 - Generación De Componentes
+
+Se crearán los componentes de nuestro aplicación que tras pasar por un circuito de validación explicado en el POST realizado sobre este mismo tema y colgado en Paradigma Digital, se procederá más adelante a su publicación dentro del propio catálogo.
+
+En este caso como en la propia aplicación hay ejemplos de sobra, me limitaré a añadir un componente HelloWorld:
+
+Para ello añadiré una carpeta al directorio components y dentro de la misma añadiré un fichero con el nombre HelloWorld.vue, al que le añadiré el siguiente contenido:
+
+```vue
+<template>
+  <div>
+    <h1>Hello World</h1>
+    <p>Esto es un ejemplo de componente muy sencillo.</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'app'
+}
+</script>
+
+<style>
+#app {
+  text-align: center;
+  color: #FF4543;
+  margin-top: 60px;
+}
+</style>
+```
+Esto lo realizaré con diversos componentes, y una vez tenga los que necesito procederé a publicarlos en el catálogo.
+
+## Paso 4 - Instalación De La Librería De Storybook
+
+Pasamos a la instalación de la librería de Storybook. Para añadir la librería y empezar a montar el catálogo hay que ejecutar los siguientes comandos:
+
+```sh
+npx sb init
+npm run storybook
+```
+
+Esto añade nuevas carpeta al proyecto, pero la que más nos va a interesar es la que se añade dentro de la carpeta src, en la cual comenzaremos a desarrollar la estructura de nuestro catálogo.
+
+```sh
+src
+|__components
+|   |__comp 1
+|   | |__comp 1.css
+|   | |__comp 1.vue
+|   |__comp 2
+|   |__comp 3
+|__pages
+|   |__page 1
+|   |__page 2
+|__stories
+```
+
+El resultado tras arrancar el proyecto debería ser algo parecido a lo siguiente:
+
+<img src={SStarter} alt="starter" />
+
+Cabe señalar que internamente dentro de esa carpeta stories lo que usaremos serán ficheros mdx para escribir la documentación de cada uno de nuestros componentes y es dentro de estos ficheros donde se creará la estructura de carpetas que mostrará nuestro catálogo.
+
+## Paso 5 - Publicación En El Catálogo
+
+Dentro de cada fichero de .story.mdx debemos importar:
+
+```js
+//Importamos la libreria de MDX
+import { Meta, Story } from '@storybook/addon-docs';
+
+//Importamos nuestro componente de la aplicación
+import ComponenteX from '../components/componentX/ComponentX.vue';
+
+//Añadimos la estructura de carpeta y título de nuestro componente
+<Meta title="Nombre Carpeta/Nombre Subcarpeta (si la hubiera)/ Nombre Componente" component={ComponenteX} />
+
+//Definimos nuestra plantilla, podrán haber tantas plantillas como componentes queramos mostrar dentro del story
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { ComponenteX },
+  //Si tuvieramos que pasarle datos hay que declararlos aqui, tal y como lo haríamos con un componente VUE JS al que le queremos pasar infirmación
+  template: '<ComponenteX />',
+});
+
+-- Documentación que se quiera insertar para explicar el correcto funcionamiento del componente --
+
+
+<Story
+  name="ComponenteX"
+  args={{
+    argumentos si los hubiera
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+```
+
+## Otros
+
+A parte, el Storybook permite añadir e incluso crear addons al catálogo, en este tutorial no vamos a entrar en este tema porque daría para extenderse bastante y no es el objetivo de esta publicación. No obstante, indicar que eltema personalizado de este catálogo se ha realizado mediante uno de esos addons, más concretamente el de Theming que provee la propia herramienta.
+
+Para instalar el addon de theming necesiataremos el ejecutar el siguiente comando:
+
+```sh
+yarn add --dev @storybook/addons @storybook/theming
+```
+El enlace explicativo a todos los modificadores que tiene este addon puede encontrarse en [Storybook Theming](https://storybook.js.org/docs/vue/configure/theming).

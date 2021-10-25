@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "StarJedi";
+  src: url("../../assets/font/StarJedi.woff");
+}
+@font-face {
+  font-family: "StarJediHollow";
+  src: url("../../assets/font/StarJediHollow.woff");
+}
+@font-face {
+  font-family: "Mandalorian";
+  src: url("../../assets/font/mandalor.woff");
+}
+@font-face {
+  font-family: "DistantGalaxy";
+  src: url("../../assets/font/DistantGalaxy.woff");
+}
+
+/* Admin General Wrapper Container */
+.admin-login-container{ min-height: calc(100vh - 268px);	margin-left: 40px; 	margin-top: 95px; margin-right: 40px;}
+.admin-login-container{margin-bottom: 40px;}
+
+/* Add button styles */
+.tab-panel{ position: relative;	min-width: 385px;}
+
+/*Dinamic Form Styles*/
+form { padding: 20px; background-color: #FFFFFF; top: 10%; position: relative;}
+input[type=text], input[type=password] { width: 100%; margin: 5px 0 20px 0; display: inline-block; border: 0px; border-bottom: 1px solid #ccc; box-sizing: border-box; outline: none;}
+.container { padding: 16px 0; text-align:left;}
+.loginform{ top:0%;}
+
+:root {
+	--select-border: #777;
+	--select-focus: #ff4543;
+	--select-arrow: var(--select-border);
+}
+  
+/* Card styles for all items */
+.card{ margin: auto; padding: 1% 2%; border-radius: 5px; background: #ecf0f1; box-shadow: 0 2px 6px 0 rgba(0,0,0, .3); min-width: 347px;}
+.SG{ margin: 0; padding: 0; text-align: center;}
+.SG .sgLi, .SG .sgLiCat{ min-width: 314px; margin: 2% .35%; display: inline-flex; box-shadow: 0 2px 4px rgb(0 0 0 / 20%); border-left: 5px solid #ff4543;}
+.SG .sgLiFullWidth {width:100%;}
+.SG .sgLiCat:hover{ box-shadow:0 5px 10px rgba(0,0,0,.15);}
+.SG .box{ width: 100%; padding:1% 2% 5% 2%;; background: #fff; min-height: 200px; box-sizing: border-box; position: relative;}
+.SG .loginbox{ max-height: 560px;}
+
+/* responsive grid*/
+@media (max-width: 970px){
+	.listInline{ display: block;}
+}
+@media (max-width: 425px){
+	.SG .sgLi{width: 100%;}
+}

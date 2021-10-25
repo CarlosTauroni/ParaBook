@@ -1,0 +1,56 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Panel from '../components/Panel/Panel.vue';
+
+<Meta title="C.Simples/Panel" component={Panel} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Panel },
+  methods:{
+    showAction: function(){
+      console.log('Se ha ejecutado la opción showAction');
+    }
+  },
+  template: '<Panel :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :hasBtnPanel=this.hasBtnPanel :icon=this.icon @action="showAction" />',
+});
+
+# COMPONENTE PANEL
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Panel from '../components/Panel/Panel.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Panel :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :hasBtnPanel=this.hasBtnPanel :icon=this.icon @action="showAction" />
+``` 
+El panel no tiene más variantes.
+
+- spinnerVisible: (Boolean) Indica si el spinner debe ser visible mientras se carga la tarjeta.
+- hasError: (Boolean) Indica si se ha producido algún error al cargar la información de la tarjeta.
+- errorMsg: (String) Mensaje a dibujar en caso de que exista algún error.
+- hasBtnPanel: (Boolean) Indica si el botón del panel será visible o no.
+- icon: (String) Acepta cualquier icono de font awesome gratuito.
+- @action: (Function) Función a definir en el caso de que se pulse el botón.
+
+## Resultado visual
+
+<Story
+  name="Panel"
+  args={{
+    spinnerVisible: false,
+    hasError:false,
+    errorMsg: 'Mensaje de ejemplo e para visualizar un error en caso de existir.',
+    hasBtnPanel: true,
+    icon: 'fa-user-plus'
+  }}>
+  {Template.bind({})}
+</Story>

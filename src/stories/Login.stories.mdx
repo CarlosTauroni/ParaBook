@@ -1,0 +1,42 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Login from '../pages/Login/Login.vue';
+
+<Meta title="Construcciones/Login" component={Login} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Login },
+  template: '<Login />',
+});
+
+# COMPONENTE DE LOGIN
+
+Constructo compuesto de:
+
+- Título de sección
+- Botón
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Login from '../components/Login/Login.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Login />
+``` 
+El componente de ofertas de servicios no tiene más variantes.
+
+## Resultado visual
+
+<Story
+  name="Login">
+  {Template.bind({})}
+</Story>

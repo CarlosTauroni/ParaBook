@@ -1,0 +1,52 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Navbar from '../components/Navbar/Navbar.vue';
+
+<Meta title="C.Simples/Barra Navegación" component={Navbar} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Navbar },
+  template: '<Navbar :items=this.items />',
+});
+
+# COMPONENTE BARRA DE NAVEGACIÓN
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Navbar from '../components/Navbar/Navbar.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Navbar :items=this.items />
+``` 
+La barra de navegación no tiene más variantes.
+
+- items: (Array) Elementos en un Array de JSON, que se mostraránen la barra de navegación.
+
+El cuerpo de cada elemento del Json corresponde con las pestañas que va a presentar la aplciación, debiendo contener los siguientes campos:
+
+```js
+{
+  id: String,
+  name: String,
+  tab: String,
+}
+```
+
+## Resultado visual
+
+<Story
+  name="Barra Navegación"
+  args={{
+    items: [{id:'1',name:'Opt 1',tab:'tab 1'},{id:'2',name:'Opt 2',tab:'tab 2'},{id:'3',name:'Opt 3',tab:'tab 3'}]
+  }}>
+  {Template.bind({})}
+</Story>

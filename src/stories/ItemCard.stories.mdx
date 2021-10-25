@@ -1,0 +1,80 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import ItemCard from '../components/ItemCard/ItemCard.vue';
+import R2D2 from './assets/FunkoR2D2.jpg';
+import FunkoStormTrooper from './assets/FunkoStormTrooper.jpg';
+
+<Meta title="C.Simples/ItemCard" component={ItemCard} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { ItemCard },
+  setup() {
+    return { ...args };
+  },
+  template: '<ItemCard :data=this.data :hasError=this.hasError />',
+});
+
+# COMPONENTE ELEMENTO TARJETA
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import ItemCard from '../components/ItemCard/ItemCard.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<ItemCard :data=this.data :hasError=this.hasError />
+``` 
+El elemento tarjeta no tiene más variantes, implementa el elemento Button internamente que es descrito en esta sección.
+
+- data: ([{}]) Vector de Jsons de producto, por cada uno de los elementos añadidos se almacenna la información del producto.
+- hasError: (Boolean) Flag que cambia la visualización del elemento en caso de que el servicio no sea capaz de devolver información.
+
+El cuerpo de cada elemento del Json corresponde con los campos enviados desde el backend y deben contener los siguientes campos:
+
+```js
+{
+  amount: Number,
+  alttext: String,
+  description: String,
+  id: String,
+  img: Image,
+  name: String,
+  price: Number
+}
+```
+
+## Resultado visual
+
+<Story
+  name="ItemCard"
+  args={{
+    data: [{
+        amount: 5,
+        alttext: "R2D2",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4de2",
+        img: R2D2,
+        name: "R2D2",
+        price: 13.02,
+      },{
+        amount: 5,
+        alttext: "FunkoStormTrooper",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4df2",
+        img: FunkoStormTrooper,
+        name: "Storm Trooper",
+        price: 11.50
+      },
+    ],
+    hasError: false
+  }}>
+  {Template.bind({})}
+</Story>

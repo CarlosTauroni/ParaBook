@@ -1,0 +1,141 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Card from '../components/Card/Card.vue';
+import Cardlong from '../components/CardLong/CardLong.vue';
+import R2D2 from './assets/FunkoR2D2.jpg';
+
+<Meta title="C.Compuestos/Tarjetas" component={Card, Cardlong} />
+
+export const Template1 = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Card },
+  methods: {
+    deleteItem: function(){
+      console.log('Acción de delete cardlong por definir.');
+    }
+  },
+  template: '<Card :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :fullname=this.fullname :name=this.name :surname=this.surname :email=this.email :phone=this.phone :status=this.status @delete="deleteItem" />',
+});
+
+export const Template2 = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Cardlong },
+  methods: {
+    deleteItem: function(){
+      console.log('Acción de delete cardlong por definir.');
+    }
+  },
+  template: '<Cardlong :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :fullname=this.fullname :imgUrl=this.imgUrl :description=this.description :email=this.email :category=this.category :groupname=this.groupname :prize=this.prize :status=this.status @delete="deleteItem" />',
+});
+
+# COMPONENTE TARJETA DE INFORMACIÓN
+
+Constructo compuesto de:
+
+- Spinner
+
+## Tarjeta Corta
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Card from '../components/Card/Card.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Card :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :fullname=this.fullname :name=this.name :surname=this.surname :email=this.email :phone=this.phone :status=this.status @delete="deleteItem"/>',
+```
+
+La tarjeta se acomoda en la parte central de la pantalla y se desplaza para acomodarse al número de tarjetas que existan en la ventana, saltando de línea cuando sea necesario.
+
+Iternamente implementa el componente Sidebar descrito en esta misma sección y para el cual hay que pasarle los siguientes datos:
+
+- id: (String) Id del elemento a mostrar.
+- spinnerVisible: (Boolean) Indica si el spinner debe ser visible mientras se carga la tarjeta.
+- hasError: (Boolean) Indica si se ha producido algún error al cargar la información de la tarjeta.
+- errorMsg: (String) Mensaje a dibujar en caso de que exista algún error.
+- fullname: (String) Nombre completo del elemento.
+- name: (String) Nombre del elemento.
+- surname: (String) Apellido del elemento.
+- email: (String) Email del elemento.
+- phone: (String) Número de teléfono del elemento.
+- status: (AVAILABLE | UNAVAILABLE | PENDING) Estado del pedido puede ser AVAILABLE | UNAVAILABLE | PENDING.
+
+## Resultado visual
+
+<Story
+  name="Tarjeta Corta"
+  args={{
+    id: '1',
+    spinnerVisible: false,
+    hasError:false,
+    errorMsg: 'Mensaje de ejemplo e para visualizar un error en caso de existir.',
+    fullname: 'Juan Cedillo',
+    name: 'Juan',
+    surname: 'Cedillo',
+    email: 'juancedillo@paradigmadigital.com',
+    phone: '111222333',
+    status: 'AVAILABLE'
+  }}
+>
+  {Template1.bind({})}
+</Story>
+
+## Tarjeta Producto
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Cardlong from '../components/CardLong/CardLong.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Cardlong :spinnerVisible=this.spinnerVisible :hasError=this.hasError :errorMsg=this.errorMsg :fullname=this.fullname :imgUrl=this.imgUrl :description=this.description :email=this.email :category=this.category :groupname=this.groupname :prize=this.prize :status=this.status @delete="deleteItem" />',
+```
+
+La tarjeta se acomoda en la parte central de la pantalla y se desplaza para acomodarse al número de tarjetas que existan en la ventana, saltando de línea cuando sea necesario.
+
+- id: (String) Id del elemento a mostrar.
+- spinnerVisible: (Boolean) Indica si el spinner debe ser visible mientras se carga la tarjeta.
+- hasError: (Boolean) Indica si se ha producido algún error al cargar la información de la tarjeta.
+- errorMsg: (String) Mensaje a dibujar en caso de que exista algún error.
+- fullname: (String) Nombre completo del elemento.
+- imgUrl: (String) Url de la imágen a mostrar dentro de la tarjeta.
+- description: (String) Descripción del elemento.
+- category: (String) Categoría del elemento.
+- groupname: (String) Grupo al que pertenece el elemento.
+- prize: (Number) Valor numérico para el precio.
+- status: (AVAILABLE | UNAVAILABLE | PENDING) Estado del pedido puede ser AVAILABLE | UNAVAILABLE | PENDING.
+
+## Resultado visual
+
+<Story
+  name="Tarjeta Producto"
+  args={{
+    id: '1',
+    spinnerVisible: false,
+    hasError:false,
+    errorMsg: 'Mensaje de ejemplo e para visualizar un error en caso de existir.',
+    fullname: 'R2D2',
+    imgUrl: R2D2,
+    description: 'Elit enim Lorem est dolor aute labore. Consectetur pariatur anim irure fugiat fugiat sunt ullamco ullamco fugiat labore pariatur qui. Ea aute non ex ut et ipsum nulla non aliquip ex. Reprehenderit incididunt pariatur tempor amet laboris eiusmod pariatur laboris officia ullamco dolore nostrud.',
+    category: 'Funko',
+    groupname: 'Funko',
+    prize: 15.98,
+    status: 'AVAILABLE'
+  }}
+>
+  {Template2.bind({})}
+</Story>

@@ -1,0 +1,46 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import ModalFullSize from '../components/ModalFullSize/ModalFullSize.vue';
+
+<Meta title="C.Simples/Modal" component={ModalFullSize} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { ModalFullSize },
+  template: `<ModalFullSize :msg=this.msg :display=this.display />`,
+});
+
+# COMPONENTE MODAL COMPLETO
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import ModalFullSize from '../components/ModalFullSize/ModalFullSize.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<ModalFullSize :msg=this.msg :display=this.display />
+```
+
+El modal ocupará toda la pantalla superponiendose al contenid que se esté mostrando en ese momento.
+
+- msg: (String) Texto que figurará dentro del modal,
+- display: (Boolean) Flag para indicar si se mostrará o no el modal.
+
+## Resultado visual
+
+<Story
+  name="Modal"
+  args= {{
+    msg: 'Este es el texto del modal',
+    display: true
+  }}
+>
+  {Template.bind({})}
+</Story>

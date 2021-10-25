@@ -1,0 +1,12 @@
+para-spin{position: relative; max-height: 80px; max-width: 80px; margin: auto; margin-bottom: 20px;}
+.para-spin-external{border-top: 2px solid #ff4543; border-left: 2px solid #ff4543; border-radius: 50%; width: 60px; height: 60px; animation: para-spin-animation-external 2s linear infinite;}
+.para-spin-internal {border-top: 2px solid #181F2C; position: absolute; top: 10px; left: 10px; border-radius: 50%; width: 40px; height: 40px; animation: para-spin-animation-internal 2s linear infinite;}
+  
+@keyframes para-spin-animation-external {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes para-spin-animation-internal {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}

@@ -1,0 +1,47 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import Services from '../pages/ServicesComp/ServicesComp.vue';
+
+<Meta title="Construcciones/Servicios" component={Services} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Services },
+  template: '<Services :text=this.text />',
+});
+
+# COMPONENTE DE OFERTA DE SERVICIOS
+
+Constructo compuesto de:
+
+- Título de sección
+- Botón
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import Services from '../pages/ServicesComp/ServicesComp.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<Services :text=this.text />
+``` 
+El componente de ofertas de servicios no tiene más variantes.
+
+- text: (String) Texto que aparecerá en el cuerpo del componente anunciando un servicio.
+
+## Resultado visual
+
+<Story
+  name="Servicios"
+  args={{
+    text: '<p>Fiestas de cumpleaños, celebración de eventos infantiles y sorpresas a nivel imperial por encargo.</p><p>Proveemos de servicios de cosplay profesional para fiestas infantiles o cualquier tipo de evento o sorpresa, realizamos planificación a medida, performance, flashmobs, etc. Conctacta con nuestro equipo de caza recompensas mandalorianos especializados donde estudiaremos y planificaremos cualquier tipo de evento.<br/><br/>Además ponemos nuestro servicio de tienda, para montar los eventos con todo el atrezo necesario para tener una experiencia de otra galaxia. Peluches, maquetas, juguetes y tdo lo que un ciudadano de la republica pueda desear.</p>'
+  }}>
+  {Template.bind({})}
+</Story>

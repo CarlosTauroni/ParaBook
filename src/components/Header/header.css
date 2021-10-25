@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "StarJedi";
+  src: url("../../assets/font/StarJedi.woff");
+}
+
+.para-blue, .para-blue-hover-red:hover{color:#fff!important;background-color:#181F2C!important}
+
+/*.para-display-fixedtopright{position:fixed;right:0;top:0; display:none}*/
+.para-display-fixedtopright{position:absolute;right:0;top:0; display:none}
+.para-logo-big-screen{display: block;}
+
+.para-logo-topright{right: 15px;top: 0;text-align: right;}
+/*.para-logo-fixedtopright{position: fixed;right: 15px;top: 0;text-align: right;}*/
+.para-logo-fixedtopright{position: absolute;right: 15px;top: 0;text-align: right;}
+.para-logo-font{font-family: StarJedi, "courier new";}
+.para-logo-padding{padding-top:0px!important;padding-bottom:64px!important}
+.para-logo-sidebar{text-align: center;text-decoration-line: underline;font-size: 30px; margin-top: 0px}
+
+@media (min-width: 601px){
+  .para-half{width: 25%;}
+  .para-logo-fixedtopright {width:40%; display: block;}
+  .para-sideopen{width: 50vw;}
+}
+@media (max-width: 992px){
+  .para-logo-big-screen{display: none;}
+}

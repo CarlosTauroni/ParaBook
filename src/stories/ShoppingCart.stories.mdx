@@ -1,0 +1,98 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import ShoppingCart from '../components/ShoppingCart/ShoppingCart.vue';
+import R2D2 from './assets/FunkoR2D2.jpg';
+import FunkoStormTrooper from './assets/FunkoStormTrooper.jpg';
+
+<Meta title="C.Simples/Barras Y Menús/ShoppingCart" component={ShoppingCart} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { ShoppingCart },
+  methods:{
+    toggleCart: function (){
+      console.log('Acción de toggleCart');
+    },
+    removeItemFromCart: function (id, total) {
+      console.log('Acción de removeItem from card')
+    },
+    sendOrder: function () {
+      console.log('Acción de sendOrder');
+    }
+  },
+  template: '<ShoppingCart style="position:relative !important; left: 50%;" :openCart=this.openCart :totalprice=this.totalprice :itemsInCart=this.itemsInCart @show="toggleCart" @remove="removeItemFromCart" @send="sendOrder" />',
+});
+
+# COMPONENTE LISTADO DE LA COMPRA
+
+Modulo:
+
+- El import para poder cargar el componente es el siguiente:
+
+```js live=true
+import ShoppingCart from '../components/ShoppingCart/ShoppingCart.vue';
+```
+
+Componente:
+
+- Para incorporar el componente a HTML, el prefijo a utilizar para la etiqueta HTML es:
+
+```html live=true
+<ShoppingCart :openCart=this.openCart :totalprice=this.totalprice :itemsInCart=this.itemsInCart @show="toggleCart()" @remove="removeItemFromCart(id)" @send="sendOrder()" />
+``` 
+
+El listado de la compra no tiene variantes y se presenta fijado a la parte superior derecha de la pantalla ocupando todo el alto de la misma. 
+
+NOTA: **Para el catálogo se ha modificado la posición, con lo que la animación de cierre se reproduce de derecha a izquierda, pero no es el comportamiento normal. Por defecto se cerrará de izquierda a derecha**
+
+Los argumentos que recibe son los siguientes:
+
+- openCart: (Boolean) Indica si el sidebar de la lista de la compra está abierta o cerrada.
+- totalprice: (Number) Indica la cantidad contenida por la lista de la compra, esta cantidad ha de ser enviada calculada.
+- itemsInCart: [{}] Vector de Jsons de producto, por cada uno de los elementos añadidos se almacenna la información del producto.
+- @remove: (function) Función que ha de ser definida en el elemento llamante.
+- @send: (function) Función que ha de ser definida en el elemento llamante.
+- @show: (function) Función que ha de ser definida en el elemento llamante.
+
+El cuerpo de cada elemento del Json corresponde con los campos enviados desde el backend y deben contener los siguientes campos:
+
+```js
+{
+  amount: Number,
+  alttext: String,
+  description: String,
+  id: String,
+  img: Image,
+  name: String,
+  price: Number
+}
+```
+
+## Resultado visual
+
+<Story
+  name="ShoppingCart"
+  args={{
+    openCart: true,
+    totalprice: 122.60,
+    itemsInCart : [{
+        amount: 5,
+        alttext: "R2D2",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4de2",
+        img: R2D2,
+        name: "R2D2",
+        price: 13.02
+      },{
+        amount: 5,
+        alttext: "FunkoStormTrooper",
+        description: "Adipisicing anim voluptate exercitation sint pariatur cupidatat consectetur tempor magna. Cupidatat consequat et esse consectetur amet incididunt sit. Incididunt cupidatat reprehenderit deserunt eu incididunt do do aute. Lorem do do qui incididunt aute aute reprehenderit ipsum quis nisi officia. Minim magna minim officia ad incididunt sit. Eiusmod in cupidatat reprehenderit adipisicing laborum magna pariatur proident.",
+        id: "609e5e71e7990f11930d4df2",
+        img: FunkoStormTrooper,
+        name: "Storm Trooper",
+        price: 11.50
+      },
+    ]
+  }}>
+  {Template.bind({})}
+</Story>
